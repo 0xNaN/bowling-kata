@@ -1,13 +1,19 @@
 import static org.junit.Assert.*;
 
+import org.junit.Before;
 import org.junit.Test;
 
 
 public class BowlingGameTest {
-
+	private Game game;
+	
+	@Before
+	public void setUp() {
+		game = new Game();
+	}
+	
 	@Test
 	public void testGutterGame() {
-		Game game = new Game();
 		for(int i = 0; i < 20; i++) {
 			game.roll(0);
 		}
@@ -16,7 +22,6 @@ public class BowlingGameTest {
 	
 	@Test
 	public void testAllOnes() {
-		Game game = new Game();
 		for(int i = 0; i < 20; i++) {
 			game.roll(1);
 		}
