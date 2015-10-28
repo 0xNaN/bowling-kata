@@ -9,18 +9,21 @@ public class Game {
 
 	public int score() {
 		int score = 0;
-		int i = 0;
+		int indexFrame = 0;
 		for(int frame = 0; frame < 10; frame++) {
-			if(rolls[i] + rolls[i + 1] == 10) {
-				//spare
-				score += 10 + rolls[i + 2];
-				i += 2;
+			if(isSpare(indexFrame)) {
+				score += 10 + rolls[indexFrame + 2];
+				indexFrame += 2;
 			} else {
-				score += rolls[i] + rolls[i + 1];
-				i += 2;
+				score += rolls[indexFrame] + rolls[indexFrame + 1];
+				indexFrame += 2;
 			}
 		}
 		return score;
+	}
+
+	private boolean isSpare(int indexFrame) {
+		return rolls[indexFrame] + rolls[indexFrame + 1] == 10;
 	}
 
 }
