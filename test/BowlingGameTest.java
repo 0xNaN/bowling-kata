@@ -12,19 +12,22 @@ public class BowlingGameTest {
 		game = new Game();
 	}
 	
+	private void rollMany(int n, int pins) {
+		for(int i = 0; i < n; i++) {
+			game.roll(pins);
+		}
+	}
+	
 	@Test
 	public void testGutterGame() {
-		for(int i = 0; i < 20; i++) {
-			game.roll(0);
-		}
+		rollMany(20, 0);
 		assertEquals(0, game.score());
 	}
 	
 	@Test
 	public void testAllOnes() {
-		for(int i = 0; i < 20; i++) {
-			game.roll(1);
-		}
+		rollMany(20, 1);
 		assertEquals(20, game.score());
 	}
+	
 }
