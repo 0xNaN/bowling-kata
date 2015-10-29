@@ -13,4 +13,13 @@ public class GameTest {
 		}
 		assertEquals(0, game.score());
 	}
+	
+	@Test public void
+	score_is_twenty_if_one_pin_is_hit_for_roll() {
+		Game game = new Game();
+		for(int i = 0; i < 20; i++) {
+			game.roll(1);
+		}
+		assertEquals(20, game.score());
+	}
 }
