@@ -25,17 +25,17 @@ public class GameTest {
 		assertEquals(20, game.score());
 	}
 	
-//	@Test public void
-//	adding_bonus_if_spare() {
-//		// spare
-//		game.roll(2);
-//		game.roll(8);
-//		// bonus
-//		game.roll(5);
-//		rollMany(MAX_ROLLS - 3, 0);
-//		
-//		assertEquals(20, game.score());
-//	}
+	@Test public void
+	adding_bonus_if_spare() {
+		// spare
+		game.roll(2);
+		game.roll(8);
+		// bonus
+		game.roll(5);
+		rollMany(MAX_ROLLS - 3, 0);
+		
+		assertEquals(20, game.score());
+	}
 
 	private void rollMany(int rolls, int pins) {
 		for(int i = 0; i < rolls; i++) {
