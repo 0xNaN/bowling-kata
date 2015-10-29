@@ -38,7 +38,13 @@ public class GameTest {
 		rollMany(MAX_ROLLS - 3, 0);
 		assertEquals(26, game.score());
 	}
-
+	
+	@Test public void
+	check_perfect_game() {
+		rollMany(12, 10);
+		assertEquals(300, game.score());
+	}
+	
 	private void rollStrikeWithBonus(int firstBall, int secondBall) {
 		game.roll(10);
 		game.roll(firstBall);

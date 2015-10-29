@@ -12,15 +12,17 @@ public class Game {
 
 	public int score() {
 		int score = 0;
-		for(int indexFrame = 0; indexFrame < 20; indexFrame++) {
+		int indexFrame = 0;
+		for(int frame = 0; frame < 10; frame++) {
 			if(isStrike(indexFrame)) {
-				score += MAX_PINS + frameValue(indexFrame + 1);
+				score += MAX_PINS + strikeBonus(indexFrame);
+				indexFrame++;
 			} else if(isSpare(indexFrame)) {
 				score += MAX_PINS + spareBonus(indexFrame);
-				indexFrame++;
+				indexFrame += 2;
 			} else {
 				score += frameValue(indexFrame);
-				indexFrame++;
+				indexFrame += 2;
 			}
 		}
 		return score;
@@ -36,6 +38,10 @@ public class Game {
 
 	private int spareBonus(int indexFrame) {
 		return rolls[indexFrame + 2];
+	}
+	
+	private int strikeBonus(int indexFrame) {
+		return rolls[indexFrame + 1] + rolls[indexFrame + 2];
 	}
 
 	private boolean isSpare(int indexFrame) {
