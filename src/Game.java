@@ -11,12 +11,16 @@ public class Game {
 
 	public int score() {
 		int score = 0;
-		for(int indexFrame = 0; indexFrame < 10; indexFrame++) {
-			if(isSpare(indexFrame)) {
+		for(int indexFrame = 0; indexFrame < 20; indexFrame++) {
+			if(rolls[indexFrame] == 10) {
+				//strike
+				score += 10 + rolls[indexFrame + 1] + rolls[indexFrame + 2];
+			} else if(isSpare(indexFrame)) {
 				score += 10 + spareBonus(indexFrame);
 				indexFrame++;
 			} else {
 				score += frameValue(indexFrame);
+				indexFrame++;
 			}
 		}
 		return score;

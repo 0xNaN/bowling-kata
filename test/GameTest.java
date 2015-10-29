@@ -31,7 +31,16 @@ public class GameTest {
 		rollMany(MAX_ROLLS - 3, 0);
 		assertEquals(20, game.score());
 	}
-
+	
+	@Test public void
+	adding_bonus_if_strike() {
+		game.roll(10);
+		game.roll(5);
+		game.roll(3);
+		rollMany(MAX_ROLLS - 3, 0);
+		assertEquals(26, game.score());
+	}
+	
 	private void rollSpareWithBonus(int bonus) {
 		game.roll(5);
 		game.roll(5);
