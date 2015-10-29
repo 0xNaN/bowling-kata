@@ -34,11 +34,15 @@ public class GameTest {
 	
 	@Test public void
 	adding_bonus_if_strike() {
-		game.roll(10);
-		game.roll(5);
-		game.roll(3);
+		rollStrikeWithBonus(5, 3);
 		rollMany(MAX_ROLLS - 3, 0);
 		assertEquals(26, game.score());
+	}
+
+	private void rollStrikeWithBonus(int firstBall, int secondBall) {
+		game.roll(10);
+		game.roll(firstBall);
+		game.roll(secondBall);
 	}
 	
 	private void rollSpareWithBonus(int bonus) {

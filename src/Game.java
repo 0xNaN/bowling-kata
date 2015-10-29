@@ -1,5 +1,6 @@
 
 public class Game {
+	private static final int MAX_PINS = 10;
 	private static final int MAX_NUMBER_OF_ROLLS = 20;
 	private int rolls[] = new int[MAX_NUMBER_OF_ROLLS + 1];
 	private int currentRoll = 0;
@@ -12,11 +13,10 @@ public class Game {
 	public int score() {
 		int score = 0;
 		for(int indexFrame = 0; indexFrame < 20; indexFrame++) {
-			if(rolls[indexFrame] == 10) {
-				//strike
-				score += 10 + rolls[indexFrame + 1] + rolls[indexFrame + 2];
+			if(isStrike(indexFrame)) {
+				score += MAX_PINS + frameValue(indexFrame + 1);
 			} else if(isSpare(indexFrame)) {
-				score += 10 + spareBonus(indexFrame);
+				score += MAX_PINS + spareBonus(indexFrame);
 				indexFrame++;
 			} else {
 				score += frameValue(indexFrame);
@@ -24,6 +24,10 @@ public class Game {
 			}
 		}
 		return score;
+	}
+
+	private boolean isStrike(int indexFrame) {
+		return rolls[indexFrame] == 10;
 	}
 
 	private int frameValue(int indexFrame) {
