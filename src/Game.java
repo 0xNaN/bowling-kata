@@ -12,15 +12,26 @@ public class Game {
 	public int score() {
 		int score = 0;
 		for(int indexFrame = 0; indexFrame < 10; indexFrame++) {
-			if(rolls[indexFrame] + rolls[indexFrame + 1] == 10) {
-				//spare
-				score += 10 + rolls[indexFrame + 2]; //spareBonus
+			if(isSpare(indexFrame)) {
+				score += 10 + spareBonus(indexFrame);
 				indexFrame++;
 			} else {
-				score += rolls[indexFrame] + rolls[indexFrame + 1];
+				score += frameValue(indexFrame);
 			}
 		}
 		return score;
+	}
+
+	private int frameValue(int indexFrame) {
+		return rolls[indexFrame] + rolls[indexFrame + 1];
+	}
+
+	private int spareBonus(int indexFrame) {
+		return rolls[indexFrame + 2];
+	}
+
+	private boolean isSpare(int indexFrame) {
+		return frameValue(indexFrame) == 10;
 	}
 
 }
