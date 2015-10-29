@@ -27,14 +27,15 @@ public class GameTest {
 	
 	@Test public void
 	adding_bonus_if_spare() {
-		// spare
-		game.roll(2);
-		game.roll(8);
-		// bonus
-		game.roll(5);
+		rollSpareWithBonus(5);
 		rollMany(MAX_ROLLS - 3, 0);
-		
 		assertEquals(20, game.score());
+	}
+
+	private void rollSpareWithBonus(int bonus) {
+		game.roll(5);
+		game.roll(5);
+		game.roll(bonus);
 	}
 
 	private void rollMany(int rolls, int pins) {
